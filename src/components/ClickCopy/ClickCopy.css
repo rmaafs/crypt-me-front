@@ -1,0 +1,18 @@
+.click-copy {
+  cursor: pointer;
+  color: blueviolet;
+  font-weight: bold;
+}
+
+.click-copy:hover {
+  color: #a950fb;
+}
+
+.click-copy-copiado {
+  color: green;
+  font-weight: bold;
+}
+
+.clip-icon {
+  padding-right: 10px;
+}
