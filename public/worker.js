@@ -1,4 +1,4 @@
-var CACHE_NAME = "pwa-crypt-me";
+var CACHE_NAME = "pwa-crypt-me-v1";
 var urlsToCache = ["/"];
 
 // Install a service worker
@@ -26,7 +26,7 @@ self.addEventListener("fetch", (event) => {
 
 // Update a service worker
 self.addEventListener("activate", (event) => {
-  var cacheWhitelist = ["pwa-crypt-me"];
+  var cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
