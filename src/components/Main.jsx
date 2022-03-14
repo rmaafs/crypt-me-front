@@ -9,7 +9,7 @@ const Main = () => {
   return (
     <div className="container">
       <Router>
-        <Form path="/" />
+        <Form default path="/" />
         <ViewContent path=":id/:secret" />
       </Router>
       <FishAnimation />
