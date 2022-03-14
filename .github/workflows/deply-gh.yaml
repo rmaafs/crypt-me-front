@@ -1,6 +1,6 @@
-name: Code Quality
+name: 🚀 Build and Deploy
 on:
-  pull_request:
+  push:
     branches:
       - master
 jobs:
@@ -23,7 +23,7 @@ jobs:
 
       - name: 👷‍♂️ Install dependencies
         run: |
-          npm i
+          npm ci
 
       - name: 🔅 Syntaxis standard prettier
         run: |
@@ -42,8 +42,17 @@ jobs:
           echo "Se validará que no existan variables sin usar, console.logs, malos estándares de código, etc."
           npm run lint
 
-      - name: 📦 Build proyect
+      - name: 📦 Build project
         env:
           CI: false
         run: |
           npm run build
+
+      - name: 🚀 Deploy to GH Pages
+        uses: JamesIves/github-pages-deploy-action@3.5.9
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: "true"
+        with:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
