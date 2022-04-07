@@ -81,7 +81,7 @@ const HelpIcon = (props) => {
             <ul>
               <li>
                 📋 The text will be readable 1 time, because after to read it,
-                we will delete your encryted message in our databases.
+                we will delete your encrypted message in our databases.
               </li>
               <li>
                 👮‍♀️ If anyone try decrypt your message with a wrong secret, we
