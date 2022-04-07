@@ -71,43 +71,44 @@ const HelpIcon = (props) => {
               fontWeight: "normal",
             }}
           >
-            👋 El texto que quieras compartir, será encriptado antes de mandarlo
-            a nuestros servidores y también lo estará en nuestras bases de
-            datos.
+            👋 Your text will be encrypted before send to our servers and saved
+            securely in our databases.
             <br />
-            Esto significa que solo tú sabrás el contenido.
+            This means only you know the real message.
             <br />
             <br />
-            <b>🔒 Por tu seguridad:</b>
+            <b>🔒 For your security:</b>
             <ul>
               <li>
-                📋 Sólo se podrá consultar una vez el texto, así que asegúrate
-                que copien el contenido una vez abierto, ya que borramos tu
-                registro en nuestras bases de datos después de consultarlo.
+                📋 The text will be readable 1 time, because after to read it,
+                we will delete your encryted message in our databases.
               </li>
               <li>
-                👮‍♀️ Si intentan consultar tu texto sin la contraseña correcta,
-                será eliminado tu registro de nuestras bases de datos para
-                evitar fuerza bruta.
+                👮‍♀️ If anyone try decrypt your message with a wrong secret, we
+                will delete the record from our database, because we are
+                avoiding brute force.
               </li>
               <li>
-                ⌛ Si tu contenido no fue consultado en menos de 24 horas, será
-                eliminado.
+                ⌛ If your message is not readed after 24 hours, we will delete
+                it.
               </li>
               <li>
-                🔑 Cuando nosotros encriptamos tu contenido, generaremos una{" "}
-                <b>llave</b> aleatoria que te compartiremos.
+                🔑 Before we encrypt your message, we will generate a{" "}
+                <b>secret</b> randomized for you.
                 <br />
-                La llave es la responsable de encriptar tu contenido, por lo que
-                si intentan desencriptarla con una llave incorrecta, el
-                contenido no será el real.
+                This secret is used to encrypt and decrypt your message
+                securely. If you lost the secret, it is impossible decrypt the
+                message.
                 <br />
-                <b>📢 Nosotros no guardamos la llave.</b>
+                <b>📢 We never save your secret.</b>
               </li>
             </ul>
-            💻 Si eres desarrollador, revisa la consola para ver el repositorio
-            en GitHub y la manera en que puedes integrar tus proyectos a nuestra
-            API REST. 🤓
+            💻 If you are developer, check it out the console!
+            <br />
+            This is a OpenSource project.
+            <br />
+            You can see the GitHub repository and the API REST Postman
+            Documentation! 🤓
           </div>
         }
         arrow
