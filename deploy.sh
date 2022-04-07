@@ -1,8 +1,12 @@
 #Delete any change
 git reset --hard
 #Change branch with the page builded
-git checkout gh-pages
+git checkout master
 #Bajamos los cambios
 git pull
+#Build project
+npm run build
 #Move static page
-cp -a ./* /var/www/crypt/
+cp -a ./build/* /var/www/crypt/
+#Remove build folder
+rm -r ./build
