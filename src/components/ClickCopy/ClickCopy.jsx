@@ -22,7 +22,7 @@ const ClickCopy = ({ text, label, icon = "" }) => {
   ) : (
     <span className="click-copy-copiado">
       <i className="clip-icon fas fa-check" />
-      ¡Copiado!
+      Copied!
     </span>
   );
 };

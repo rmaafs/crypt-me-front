@@ -13,7 +13,7 @@ const ShareInfo = ({ data, onBack }) => {
       <div className="share-info">
         <ClickCopy
           text={url}
-          label="Pulsa aquí para copiar el link para desencriptar"
+          label="Click here to copy the link for decrypt the message"
           icon="fas fa-clipboard"
         />
         <br />
@@ -33,7 +33,7 @@ const ShareInfo = ({ data, onBack }) => {
       <div style={{ paddingTop: "30px" }}>
         <Button onClickNoAnimation={onBack}>
           <i className="btn-icon fas fa-arrow-left" />
-          Regresar
+          Home
         </Button>
       </div>
     </Fragment>

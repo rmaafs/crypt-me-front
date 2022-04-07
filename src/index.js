@@ -7,7 +7,7 @@ ReactDOM.render(<App />, document.getElementById("root"));
 
 // eslint-disable-next-line no-console
 console.log(
-  "\n\n%c¡Hola desarrollador!\n\nConsulta el código fuente en\nhttps://github.com/rmaafs/crypt-me-api \n\n%cAPI REST en Postman:\nhttps://documenter.getpostman.com/view/9525350/U16krkhd \n\n\n",
+  "\n\n%cHello developer!\n\nContribute to the project:\nhttps://github.com/rmaafs/crypt-me-front \nhttps://github.com/rmaafs/crypt-me-api \n\n%cPostman API REST:\nhttps://documenter.getpostman.com/view/9525350/U16krkhd \n\n\n",
   "color:aqua",
   "color:orange"
 );

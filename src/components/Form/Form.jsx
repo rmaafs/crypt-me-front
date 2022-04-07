@@ -33,19 +33,19 @@ const Form = () => {
     <Card>
       {jsonResponse ? (
         <Fragment>
-          <h2>Texto encriptado</h2>
-          <HelpIcon maxWidth="300px" />
+          <h2>Message encrypted</h2>
+          <HelpIcon maxWidth="350px" />
           <ShareInfo data={jsonResponse} onBack={() => setJsonResponse(null)} />
         </Fragment>
       ) : (
         <Fragment>
-          <h2>Ingresa tu texto</h2>
-          <HelpIcon />
+          <h2>Insert your message</h2>
+          <HelpIcon maxWidth="350px" />
 
           <TextArea onChange={setText} />
           <Button onClick={sendInfo}>
             <i className="btn-icon fas fa-share-alt" />
-            Compartir
+            Share
           </Button>
         </Fragment>
       )}

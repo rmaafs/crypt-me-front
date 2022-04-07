@@ -9,7 +9,7 @@ import HelpIcon from "../HelpIcon/HelpIcon";
 const ViewContent = ({ navigate, id, secret }) => {
   const [loading, setLoading] = useState(true);
   const [text, setText] = useState(null);
-  const [title, setTitle] = useState("Cargando...");
+  const [title, setTitle] = useState("Loading...");
 
   const fetchData = () => {
     return new Promise((resolve) => {
@@ -25,7 +25,7 @@ const ViewContent = ({ navigate, id, secret }) => {
           if (data.text) {
             const decrypted = Buffer(data.text, "base64").toString("ascii");
             setText(decrypted);
-            setTitle("¡Listo!");
+            setTitle("Glup... Text decrypted!");
           } else if (data.error) {
             setTitle(data.error);
           }
@@ -47,12 +47,12 @@ const ViewContent = ({ navigate, id, secret }) => {
       <h2>{title}</h2>
       {!loading && text !== null ? (
         <Fragment>
-          <HelpIcon maxWidth="115px" />
+          <HelpIcon maxWidth="400px" />
           <TextArea disabled={true} defaultText={text} />
           <div>
             <ClickCopy
               text={text}
-              label="Click aquí para copiar el contenido"
+              label="Click here for copy the message"
               icon="fas fa-clipboard"
             />
           </div>
@@ -62,7 +62,7 @@ const ViewContent = ({ navigate, id, secret }) => {
         <div style={{ paddingTop: "30px" }}>
           <Button onClickNoAnimation={() => navigate("/")}>
             <i className="btn-icon fas fa-arrow-left" />
-            Ir al inicio
+            Home
           </Button>
         </div>
       )}

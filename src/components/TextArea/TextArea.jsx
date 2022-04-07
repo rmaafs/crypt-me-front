@@ -4,7 +4,7 @@ import "./TextArea.css";
 const TextArea = ({ onChange, disabled, defaultText }) => {
   return (
     <textarea
-      placeholder="Escribe tu texto..."
+      placeholder="Glup glup glup..."
       disabled={disabled || false}
       onChange={(e) => onChange && onChange(e.target.value)}
       defaultValue={defaultText || ""}
