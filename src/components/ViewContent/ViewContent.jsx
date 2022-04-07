@@ -47,7 +47,7 @@ const ViewContent = ({ navigate, id, secret }) => {
       <h2>{title}</h2>
       {!loading && text !== null ? (
         <Fragment>
-          <HelpIcon maxWidth="115px" />
+          <HelpIcon maxWidth="400px" />
           <TextArea disabled={true} defaultText={text} />
           <div>
             <ClickCopy

@@ -34,13 +34,13 @@ const Form = () => {
       {jsonResponse ? (
         <Fragment>
           <h2>Message encrypted</h2>
-          <HelpIcon maxWidth="300px" />
+          <HelpIcon maxWidth="350px" />
           <ShareInfo data={jsonResponse} onBack={() => setJsonResponse(null)} />
         </Fragment>
       ) : (
         <Fragment>
           <h2>Insert your message</h2>
-          <HelpIcon />
+          <HelpIcon maxWidth="350px" />
 
           <TextArea onChange={setText} />
           <Button onClick={sendInfo}>
