@@ -4,6 +4,8 @@ git reset --hard
 git checkout master
 #Bajamos los cambios
 git pull
+#Install dependencies
+npm i
 #Build project
 npm run build
 #Move static page
