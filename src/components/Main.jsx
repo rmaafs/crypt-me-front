@@ -12,7 +12,7 @@ const Main = () => {
       <HashRouter basename="/">
         <Routes>
           <Route exact path="/" element={<Form />} />
-          <Route exact path="l" element={<ViewContent />} />
+          <Route exact path=":id/:secret" element={<ViewContent />} />
         </Routes>
       </HashRouter>
       <FishAnimation />

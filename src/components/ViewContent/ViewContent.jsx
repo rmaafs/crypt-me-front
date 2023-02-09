@@ -5,19 +5,15 @@ import server from "../../server.json";
 import ClickCopy from "../ClickCopy/ClickCopy";
 import Button from "../Button/Button";
 import HelpIcon from "../HelpIcon/HelpIcon";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ViewContent = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { id, secret } = useParams();
 
   const [loading, setLoading] = useState(true);
   const [text, setText] = useState(null);
   const [title, setTitle] = useState("Loading...");
-
-  const params = new URLSearchParams(location.search);
-  const id = params.get("id");
-  const secret = params.get("s");
 
   const fetchData = () => {
     return new Promise((resolve) => {

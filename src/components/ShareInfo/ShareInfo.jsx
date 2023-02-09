@@ -6,7 +6,7 @@ import Button from "../Button/Button";
 const ShareInfo = ({ data, onBack }) => {
   const id = data.id;
   const secret = data.secret;
-  const url = window.location.origin + "/#/l?id=" + id + "&s=" + secret;
+  const url = window.location.origin + "/#/" + id + "/" + secret;
 
   return (
     <Fragment>
