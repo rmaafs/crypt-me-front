@@ -43,7 +43,6 @@ const ViewContent = () => {
     };
 
     fetchData();
-    // eslint-disable-next-line
   }, []);
 
   return (

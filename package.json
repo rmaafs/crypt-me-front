@@ -23,12 +23,15 @@
     "check": "npm run sintax:test && npm run lint && jest"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^12.1.0",
     "@testing-library/user-event": "^13.5.0",
     "check-files-exist": "^1.0.1",
-    "eslint": "^10.0.1",
+    "eslint": "^9.39.3",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-switch-error-warn": "^1.0.0",
+    "globals": "^17.3.0",
     "prettier": "^3.8.1"
   },
   "eslintConfig": {
