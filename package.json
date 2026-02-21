@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "sintax:test": "prettier --check \"{,!(node_modules)/**/}*.(jsx|css)\"",
@@ -33,12 +33,6 @@
     "eslint-plugin-switch-error-warn": "^1.0.0",
     "globals": "^17.3.0",
     "prettier": "^3.8.1"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
