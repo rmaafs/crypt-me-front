@@ -1,11 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Card from "../Card/Card";
 import TextArea from "../TextArea/TextArea";
-import server from "../../server.json";
 import ClickCopy from "../ClickCopy/ClickCopy";
 import Button from "../Button/Button";
 import HelpIcon from "../HelpIcon/HelpIcon";
 import { useNavigate, useParams } from "react-router-dom";
+import { decrypt } from "../../utils/crypto";
+import { getMessage } from "../../services/api-worker";
 
 const ViewContent = () => {
   const navigate = useNavigate();
@@ -15,35 +16,33 @@ const ViewContent = () => {
   const [text, setText] = useState(null);
   const [title, setTitle] = useState("Loading...");
 
-  const fetchData = () => {
-    return new Promise((resolve) => {
-      fetch(server.url, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id: id, secret: secret }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.text) {
-            const decrypted = Buffer(data.text, "base64").toString("ascii");
-            setText(decrypted);
-            setTitle("Glup... Text decrypted!");
-          } else if (data.error) {
-            setTitle(data.error);
-          }
-        })
-        .finally(() => {
-          resolve(true);
-          setLoading(false);
-        });
-    });
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getMessage(id);
+
+        if (!data.message) {
+          setTitle(data.error || "Message not found");
+          return;
+        }
+
+        const decrypted = decrypt(data.message, secret);
+
+        if (!decrypted) {
+          setTitle("Invalid secret");
+          return;
+        }
+
+        setText(decrypted);
+        setTitle("Glup... Text decrypted!");
+      } catch {
+        setTitle("Error retrieving message");
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchData();
-    // eslint-disable-next-line
   }, []);
 
   return (

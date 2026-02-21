@@ -11,30 +11,23 @@
 .fish {
   position: absolute;
   margin: -15px 0 0 -30px;
-  opacity: 0;
-  transition: transform 10s;
-  animation: spawn 0.5s forwards;
+  will-change: transform;
+  transition: opacity 0.5s;
 }
-@keyframes spawn {
-  100% {
-    opacity: 1;
-  }
-}
-
 .fish-bob {
   position: relative;
   margin-top: -20px;
-  animation: bob 6s infinite;
+  animation: bob 4s ease-in-out infinite;
 }
 @keyframes bob {
   50% {
-    transform: translateY(40px);
+    transform: translateY(12px);
   }
 }
 
 .fish-direction {
   position: relative;
-  transition: transform 0.5s;
+  transition: transform 0.3s ease-out;
 }
 
 .fish-body {
@@ -127,5 +120,107 @@
   100% {
     transform: translateY(-200px) rotate(1080deg);
     opacity: 0;
+  }
+}
+
+/* Food pellet */
+.food {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #8b4513;
+  border-radius: 50%;
+  margin-left: -4px;
+  margin-top: -4px;
+  z-index: -1;
+  box-shadow: 0 0 4px rgba(139, 69, 19, 0.6);
+  animation: foodSpawn 0.3s ease-out forwards;
+}
+
+@keyframes foodSpawn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.6);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.food-eaten {
+  animation: foodEaten 0.4s ease-out forwards !important;
+}
+
+@keyframes foodEaten {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* Fish hint tooltip */
+.fish-hint {
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  color: rgba(42, 100, 150, 0.85);
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: hintIn 0.4s ease-out forwards;
+  z-index: -1;
+}
+
+.fish-hint::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(255, 255, 255, 0.7);
+}
+
+@keyframes hintIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.fish-hint-out {
+  animation: hintOut 0.5s ease-in forwards !important;
+}
+
+@keyframes hintOut {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
   }
 }

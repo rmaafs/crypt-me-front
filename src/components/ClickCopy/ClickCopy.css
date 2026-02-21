@@ -1,3 +1,18 @@
+.click-copy-wrapper {
+  display: grid;
+  justify-items: center;
+}
+
+.click-copy-wrapper > span {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.click-copy-hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .click-copy {
   cursor: pointer;
   color: blueviolet;

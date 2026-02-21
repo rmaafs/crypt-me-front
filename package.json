@@ -4,41 +4,35 @@
   "private": true,
   "homepage": "https://crypt.rmaafs.com",
   "dependencies": {
-    "@material-ui/core": "^4.12.3",
-    "@reach/router": "^1.3.4",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.1.0",
-    "@testing-library/user-event": "^13.2.1",
+    "@material-ui/core": "^4.12.4",
+    "crypto-js": "^4.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "^6.8.1",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^2.1.0"
+    "react-router-dom": "^6.30.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^5.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "sintax:test": "prettier --check \"{,!(node_modules)/**/}*.(jsx|css)\"",
     "sintax:fix": "prettier --check --write \"{,!(node_modules)/**/}*.(jsx|css)\"",
-    "lint": "eslint . --ext .jsx",
+    "lint": "eslint 'src/**/*.jsx'",
     "check": "npm run sintax:test && npm run lint && jest"
   },
   "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^12.1.0",
+    "@testing-library/user-event": "^13.5.0",
     "check-files-exist": "^1.0.1",
-    "eslint": "^7.32.0",
+    "eslint": "^9.39.3",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-switch-error-warn": "^1.0.0",
-    "prettier": "^2.4.0",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.2.1"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "globals": "^17.3.0",
+    "prettier": "^3.8.1"
   },
   "browserslist": {
     "production": [

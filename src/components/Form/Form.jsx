@@ -1,52 +1,51 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import Button from "../Button/Button";
 import Card from "../Card/Card";
 import ShareInfo from "../ShareInfo/ShareInfo";
 import TextArea from "../TextArea/TextArea";
-import server from "../../server.json";
 import HelpIcon from "../HelpIcon/HelpIcon";
+import KeyboardHint from "../KeyboardHint/KeyboardHint";
+import { generateSecret, encrypt } from "../../utils/crypto";
+import { saveMessage } from "../../services/api-worker";
 
 const Form = () => {
   const [text, setText] = useState("");
-  const [jsonResponse, setJsonResponse] = useState(null);
+  const [shareData, setShareData] = useState(null);
+  const buttonRef = useRef(null);
 
-  const sendInfo = () => {
-    return new Promise((resolve) => {
-      const base64 = Buffer.from(text).toString("base64");
+  const sendInfo = async () => {
+    if (!text.trim()) return;
+    const secret = generateSecret();
+    const encrypted = encrypt(text, secret);
+    const data = await saveMessage(encrypted);
 
-      fetch(server.url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ text: base64 }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.id) setJsonResponse(data);
-        })
-        .catch(() => resolve(true));
-    });
+    if (!data.id) return;
+    setShareData({ id: data.id, secret });
+  };
+
+  const handleSubmitShortcut = () => {
+    buttonRef.current?.click();
   };
 
   return (
     <Card>
-      {jsonResponse ? (
+      {shareData ? (
         <Fragment>
           <h2>Message encrypted</h2>
           <HelpIcon maxWidth="350px" />
-          <ShareInfo data={jsonResponse} onBack={() => setJsonResponse(null)} />
+          <ShareInfo data={shareData} onBack={() => setShareData(null)} />
         </Fragment>
       ) : (
         <Fragment>
           <h2>Insert your message</h2>
           <HelpIcon maxWidth="350px" />
 
-          <TextArea onChange={setText} />
-          <Button onClick={sendInfo}>
+          <TextArea onChange={setText} onSubmit={handleSubmitShortcut} />
+          <Button buttonRef={buttonRef} onClick={sendInfo}>
             <i className="btn-icon fas fa-share-alt" />
             Share
           </Button>
+          <KeyboardHint shortcut="Mod + Enter" description="to share" />
         </Fragment>
       )}
     </Card>

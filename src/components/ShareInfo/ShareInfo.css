@@ -4,6 +4,37 @@
   border-radius: 20px;
 }
 
-.share-info-text {
-  color: #333333;
+.share-info-hint {
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.share-info-details {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.share-info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.share-info-label {
+  color: #555;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.share-info-value {
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: monospace;
 }

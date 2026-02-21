@@ -1,24 +1,41 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./Button.css";
 
 const Button = (props) => {
   const [loading, setLoading] = useState(false);
+  const mountedRef = useRef(true);
+  const divRef = useRef(null);
 
-  const click = () => {
-    //Si no quiere animación al ejecutar la función...
+  React.useEffect(() => {
+    if (props.buttonRef) {
+      props.buttonRef.current = divRef.current;
+    }
+  }, [props.buttonRef]);
+
+  React.useEffect(() => {
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
+
+  const click = async () => {
     if (props.onClickNoAnimation) {
       props.onClickNoAnimation();
       return;
     }
 
+    if (loading) return;
+
     setLoading(true);
-    if (!loading) {
-      props.onClick().finally(() => setLoading(false));
+    try {
+      await props.onClick();
+    } finally {
+      if (mountedRef.current) setLoading(false);
     }
   };
 
   return (
-    <div onClick={loading ? () => {} : click} className="button">
+    <div ref={divRef} onClick={loading ? () => {} : click} className="button">
       {loading ? <div className="spinner"></div> : props.children}
     </div>
   );
