@@ -1,41 +1,19 @@
-var CACHE_NAME = "pwa-crypt-me-v1";
-var urlsToCache = ["/"];
+// Service Worker for PWA install support (no caching)
 
-// Install a service worker
-self.addEventListener("install", (event) => {
-  // Perform install steps
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
-      return cache.addAll(urlsToCache);
-    })
-  );
+self.addEventListener("install", () => {
+  self.skipWaiting();
 });
 
-// Cache and return requests
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then(function (response) {
-      // Cache hit - return response
-      if (response) {
-        return response;
-      }
-      return fetch(event.request);
-    })
-  );
-});
-
-// Update a service worker
 self.addEventListener("activate", (event) => {
-  var cacheWhitelist = [CACHE_NAME];
+  // Clean up any old caches from previous versions
   event.waitUntil(
     caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
+      return Promise.all(cacheNames.map((name) => caches.delete(name)));
     })
   );
+  self.clients.claim();
+});
+
+self.addEventListener("fetch", (event) => {
+  event.respondWith(fetch(event.request));
 });
