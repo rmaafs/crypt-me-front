@@ -3,9 +3,12 @@ import globals from "globals";
 import reactPlugin from "eslint-plugin-react";
 
 export default [
-  js.configs.recommended,
   {
-    files: ["**/*.jsx"],
+    ignores: ["public/**", "build/**", "node_modules/**"],
+  },
+  {
+    files: ["src/**/*.jsx"],
+    ...js.configs.recommended,
     plugins: {
       react: reactPlugin,
     },
@@ -29,6 +32,7 @@ export default [
       },
     },
     rules: {
+      ...js.configs.recommended.rules,
       ...reactPlugin.configs.recommended.rules,
       "react/prop-types": "off",
       "react/display-name": "warn",

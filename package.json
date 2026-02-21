@@ -19,7 +19,7 @@
     "eject": "react-scripts eject",
     "sintax:test": "prettier --check \"{,!(node_modules)/**/}*.(jsx|css)\"",
     "sintax:fix": "prettier --check --write \"{,!(node_modules)/**/}*.(jsx|css)\"",
-    "lint": "eslint . --ext .jsx",
+    "lint": "eslint 'src/**/*.jsx'",
     "check": "npm run sintax:test && npm run lint && jest"
   },
   "devDependencies": {
