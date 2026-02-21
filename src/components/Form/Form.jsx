@@ -12,6 +12,7 @@ const Form = () => {
   const [shareData, setShareData] = useState(null);
 
   const sendInfo = async () => {
+    if (!text.trim()) return;
     const secret = generateSecret();
     const encrypted = encrypt(text, secret);
     const data = await saveMessage(encrypted);

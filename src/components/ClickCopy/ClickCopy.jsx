@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ClickCopy.css";
 
 const ClickCopy = ({ text, label, icon = "" }) => {
   const [copiado, setCopiado] = useState(false);
 
+  useEffect(() => {
+    if (!copiado) return;
+    const timer = setTimeout(() => setCopiado(false), 3000);
+    return () => clearTimeout(timer);
+  }, [copiado]);
+
   const copyClipboard = () => {
-    var input = document.createElement("textarea");
-    input.innerHTML = text;
-    document.body.appendChild(input);
-    input.select();
-    document.execCommand("copy");
-    document.body.removeChild(input);
+    navigator.clipboard.writeText(text);
     setCopiado(true);
   };
 

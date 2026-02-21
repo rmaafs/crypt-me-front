@@ -11,22 +11,29 @@ const ShareInfo = ({ data, onBack }) => {
   return (
     <Fragment>
       <div className="share-info">
+        <p className="share-info-hint">
+          Share this link with anyone you trust.
+          <br />
+          They will be able to read your message.
+        </p>
         <ClickCopy
           text={url}
-          label="Click here to copy the link for decrypt the message"
-          icon="fas fa-clipboard"
+          label="Copy shareable link"
+          icon="fas fa-link"
         />
-        <br />
-        <br />
-        <div className="share-info-text">
-          <b>ID:</b>
-          <br />
-          {id}
-          <br />
-          <br />
-          <b>Secret:</b>
-          <br />
-          {secret}
+        <div className="share-info-details">
+          <div className="share-info-item">
+            <span className="share-info-label">
+              <i className="fas fa-fingerprint" /> ID
+            </span>
+            <span className="share-info-value">{id}</span>
+          </div>
+          <div className="share-info-item">
+            <span className="share-info-label">
+              <i className="fas fa-key" /> Secret
+            </span>
+            <span className="share-info-value">{secret}</span>
+          </div>
         </div>
       </div>
 
