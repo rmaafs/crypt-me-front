@@ -42,9 +42,7 @@ const ClickCopy = ({ text, label, icon = "" }) => {
         <KeyboardHint shortcut="Mod + C" description="to copy" />
       </span>
       <span
-        className={
-          "click-copy-copiado" + (copiado ? "" : " click-copy-hidden")
-        }
+        className={"click-copy-copiado" + (copiado ? "" : " click-copy-hidden")}
       >
         <i className="clip-icon fas fa-check" />
         Copied!

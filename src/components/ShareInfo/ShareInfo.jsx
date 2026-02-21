@@ -16,11 +16,7 @@ const ShareInfo = ({ data, onBack }) => {
           <br />
           They will be able to read your message.
         </p>
-        <ClickCopy
-          text={url}
-          label="Copy shareable link"
-          icon="fas fa-link"
-        />
+        <ClickCopy text={url} label="Copy shareable link" icon="fas fa-link" />
         <div className="share-info-details">
           <div className="share-info-item">
             <span className="share-info-label">
