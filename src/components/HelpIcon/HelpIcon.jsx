@@ -1,5 +1,5 @@
 import React from "react";
-import Tooltip from "@mui/material/Tooltip";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const HelpIcon = (props) => {
   const color = "#ccd6f6";
@@ -20,7 +20,7 @@ const HelpIcon = (props) => {
           top: "7px",
           cursor: "pointer",
         }}
-        space="preserve"
+        xmlSpace="preserve"
       >
         <g>
           <g>
@@ -71,44 +71,40 @@ const HelpIcon = (props) => {
               fontWeight: "normal",
             }}
           >
-            👋 Your text will be encrypted before send to our servers and saved
-            securely in our databases.
+            👋 Your message is encrypted <b>locally in your browser</b> before
+            it ever leaves your device. We only receive and store the encrypted
+            text — we never see the original message.
             <br />
-            This means only you know the real message.
             <br />
-            <br />
-            <b>🔒 For your security:</b>
+            <b>🔒 How it works:</b>
             <ul>
               <li>
-                📋 The text will be readable 1 time, because after to read it,
-                we will delete your encrypted message in our databases.
+                🔑 A random <b>5-character secret</b> is generated on your
+                device. This secret encrypts your message using AES encryption
+                right in your browser.
               </li>
               <li>
-                👮‍♀️ If anyone try decrypt your message with a wrong secret, we
-                will delete the record from our database, because we are
-                avoiding brute force.
+                📤 Only the <b>encrypted text</b> is sent to our server. The
+                secret never leaves your device — it is included only in the
+                shareable link.
               </li>
               <li>
-                ⌛ If your message is not readed after 24 hours, we will delete
+                📥 When someone opens the link, the encrypted text is fetched
+                from our server and <b>decrypted locally</b> in their browser
+                using the secret from the URL.
+              </li>
+              <li>
+                ⌛ If your message is not read after 24 hours, we will delete
                 it.
               </li>
               <li>
-                🔑 Before we encrypt your message, we will generate a{" "}
-                <b>secret</b> randomized for you.
-                <br />
-                This secret is used to encrypt and decrypt your message
-                securely. If you lost the secret, it is impossible decrypt the
-                message.
-                <br />
-                <b>📢 We never save your secret.</b>
+                🚫 If you lose the secret, it is <b>impossible</b> to decrypt
+                the message. We never store your secret.
               </li>
             </ul>
-            💻 If you are developer, check it out the console!
+            💻 This is an open-source project.
             <br />
-            This is a OpenSource project.
-            <br />
-            You can see the GitHub repository and the API REST Postman
-            Documentation! 🤓
+            Check out the repository on GitHub! 🤓
           </div>
         }
         arrow
