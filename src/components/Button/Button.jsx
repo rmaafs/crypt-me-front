@@ -4,6 +4,13 @@ import "./Button.css";
 const Button = (props) => {
   const [loading, setLoading] = useState(false);
   const mountedRef = useRef(true);
+  const divRef = useRef(null);
+
+  React.useEffect(() => {
+    if (props.buttonRef) {
+      props.buttonRef.current = divRef.current;
+    }
+  }, [props.buttonRef]);
 
   React.useEffect(() => {
     return () => {
@@ -28,7 +35,7 @@ const Button = (props) => {
   };
 
   return (
-    <div onClick={loading ? () => {} : click} className="button">
+    <div ref={divRef} onClick={loading ? () => {} : click} className="button">
       {loading ? <div className="spinner"></div> : props.children}
     </div>
   );
